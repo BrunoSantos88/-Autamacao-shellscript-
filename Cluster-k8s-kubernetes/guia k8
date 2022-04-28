@@ -1,0 +1,12 @@
+instalar 
+
+kubeadm init --kubernetes-version=1.21.0
+  apt-get update
+  mkdir -p $HOME/.kube
+  cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+  desistalar 
+
+  kubeadm reset
