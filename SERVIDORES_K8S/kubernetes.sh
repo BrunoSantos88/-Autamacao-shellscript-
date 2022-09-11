@@ -47,7 +47,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 sudo hostnamectl set-hostname master-node
 
-kubeadm init --pod-network-cidr=10.244.0.0/16  --apiserver-advertise-address 129.213.125.247
+kubeadm init --pod-network-cidr=10.244.0.0/16
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
