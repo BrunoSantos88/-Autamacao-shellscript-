@@ -22,7 +22,7 @@ apt-get install \
     echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  apt-get update
+  apt-get update -y
   apt-get install docker-ce docker-ce-cli containerd.io -y
   apt-get update
   curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -31,7 +31,7 @@ apt-get install \
   apt-get install -y kubeadm=1.21.0-00 kubelet=1.21.0-00 -y -y
   kubeadm config images pull --kubernetes-version-1.21.0
   kubeadm init --kubernetes-version=1.21.0
-  apt-get update
+  apt-get update -y
   mkdir -p $HOME/.kube
   cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   chown $(id -u):$(id -g) $HOME/.kube/config
