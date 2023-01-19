@@ -1,3 +1,4 @@
+#!/bin/bash
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "step1"
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -36,4 +37,8 @@ sudo systemctl restart containerd
 sudo systemctl enable containerd
 sudo systemctl enable kubelet
 sudo kubeadm config images pull --cri-socket /run/containerd/containerd.sock --kubernetes-version v1.23.0
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+sudo apt-get update -y
+sudo mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
